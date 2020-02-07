@@ -5,7 +5,7 @@ const filterByQuery = require('../utils/filters').filterByQuery;
 const filterByDistance = require('../utils/filters').filterByDistance;
 
 
-const restaurantsPath = __dirname+'/../materials/restaurants.json';
+const restaurantsPath = __dirname+'/../data/restaurants.json';
 const distanceToSearch = 3;
 
 

@@ -4,7 +4,7 @@ const readFile = require('../utils/fs').getFromFileJSON;
 
 
 test('filterByQuery sorts data and return an array', async () => {
-    const restaurants = (await readFile(__dirname+'./../materials/restaurants.json')).restaurants;
+    const restaurants = (await readFile(__dirname+'./../data/restaurants.json')).restaurants;
     const data = await filterByQuery('sushi', restaurants);
     expect(data).toMatchObject([
         {
@@ -173,7 +173,7 @@ test('filterByQuery sorts data and return an array', async () => {
 });
 
 test('filterByDistance sorts data and return an array', async () => {
-    const restaurants = (await readFile(__dirname+'./../materials/restaurants.json')).restaurants;
+    const restaurants = (await readFile(__dirname+'./../data/restaurants.json')).restaurants;
 
     const coordinates = {
         longitude: 24.841136799999997,
