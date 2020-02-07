@@ -1,11 +1,12 @@
 const fs = require('fs');
-//const { promisify } = require('util');
+const { promisify } = require('util');
 
-const readFile = fs.promises.readFile;
+
+const promiseReadFile = promisify(fs.readFile);
 
 const getFromFileJSON = async (file) => {
     try{
-        const data = await readFile(file, "utf8");
+        const data = await promiseReadFile(file, "utf8");
         return JSON.parse(data) || null;
     } catch (e) {
         console.log(e);
