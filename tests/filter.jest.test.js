@@ -2,9 +2,11 @@ const filterByQuery = require('../utils/filters').filterByQuery;
 const filterByDistance = require('../utils/filters').filterByDistance;
 const readFile = require('../utils/fs').getFromFileJSON;
 
+const restaurantsListPath = require('../config').restaurantsPath;
 
+//checks if filterByQuery works with partial or full string match
 test('filterByQuery sorts data and return an array', async () => {
-    const restaurants = (await readFile(__dirname+'./../data/restaurants.json')).restaurants;
+    const restaurants = (await readFile( restaurantsListPath )).restaurants;
     const data = await filterByQuery('sushi', restaurants);
     expect(data).toMatchObject([
         {
@@ -172,8 +174,9 @@ test('filterByQuery sorts data and return an array', async () => {
     ])
 });
 
+//checks if filterByDistance works with coordinates
 test('filterByDistance sorts data and return an array', async () => {
-    const restaurants = (await readFile(__dirname+'./../data/restaurants.json')).restaurants;
+    const restaurants = (await readFile( restaurantsListPath )).restaurants;
 
     const coordinates = {
         longitude: 24.841136799999997,
@@ -183,8 +186,7 @@ test('filterByDistance sorts data and return an array', async () => {
     const distance = 13.2;
 
     const data = await filterByDistance( restaurants, coordinates, distance);
-    expect(data).toMatchObject(
-        [
+    expect(data).toMatchObject([
             {
                 "blurhash": "U8JG+q-#?p]:~S[mxrpEpw-;rCAa9^m+IBS%",
                 "city": "Helsinki",
@@ -221,6 +223,5 @@ test('filterByDistance sorts data and return an array', async () => {
                     "hamburger"
                 ]
             }
-        ]
-    )
+        ])
 });

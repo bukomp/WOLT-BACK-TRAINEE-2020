@@ -1,6 +1,7 @@
 const app = require('./app.js');
 
-const PORT = 3001;
+//port on which server runs
+const PORT = require('./config').PORT;
 
 const server = require('http').createServer(app);
 server.listen(PORT, ()=>{

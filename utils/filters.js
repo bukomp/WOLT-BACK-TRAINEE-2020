@@ -1,4 +1,14 @@
 
+/*
+    FilterByQuery filters array of restaurants with given query string by searching
+    partial or full matches in name, description, tags.
+
+    As parameters takes:
+    query:String = string by witch array is sorted
+    array:Array = array of restaurants
+
+    Returns array of filtered restaurants.
+*/
 const filterByQuery = async (query, array) => {
     if(query.length<=0) return null;
     const tempArr = array.filter( object =>
@@ -10,6 +20,16 @@ const filterByQuery = async (query, array) => {
     return tempArr;
 };
 
+/*
+    FilterByQuery filters array of restaurants with given coordinates by calculating distance between
+    given coordinates and coordinates of restaurant.
+
+    As parameters takes:
+    array:Array = array of restaurants
+    coordinates:Object = contains coordinates. Example: { "latitude" : 60.17045 , "longitude" : 24.93147 }
+
+    Returns array of filtered restaurants.
+*/
 const filterByDistance = (array, coordinates, distance) => {
 
     const distanceFilter = (lat1, lon1, lat2, lon2) => {
